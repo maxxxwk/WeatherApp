@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">WeatherApp</string>
+    <string name="weather_info_loading_error">Cannot load info about weather…</string>
+    <string name="loading_label">Loading…</string>
+    <string name="show_weather_button_text">Show weather</string>
+    <string name="search_field_label_text">Enter city</string>
 </resources>

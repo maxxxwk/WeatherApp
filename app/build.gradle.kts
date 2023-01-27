@@ -3,6 +3,8 @@
 plugins {
     id(Plugins.androidApplication)
     id(Plugins.kotlinAndroid)
+    kotlin(Plugins.kapt)
+    kotlin(Plugins.serialization).version(Versions.kotlin)
 }
 
 android {
@@ -21,6 +23,17 @@ android {
         vectorDrawables {
             useSupportLibrary = true
         }
+
+        buildConfigField(
+            "String",
+            "BASE_URL",
+            "\"https://api.openweathermap.org/data/2.5/\""
+        )
+        buildConfigField(
+            "String",
+            "API_KEY",
+            "\"809f4ed63f50a4fd859afbba5c7dfb74\""
+        )
     }
 
     buildTypes {
@@ -53,11 +66,29 @@ android {
 }
 
 dependencies {
-    implementation(Libraries.lifecycleRuntime)
+    implementation(Libraries.viewmodel_ktx)
+    implementation(Libraries.viewmodel_compose)
+
     implementation(Libraries.composeActivity)
     implementation(Libraries.composeUI)
     implementation(Libraries.composeUIToolingPreview)
     implementation(Libraries.composeMaterial)
+    implementation(Libraries.composeNavigation)
+
+    implementation(Libraries.immutableCollections)
+
+    implementation(Libraries.dagger)
+    kapt(KaptCompilers.dagger)
+
+    implementation(Libraries.okHttp)
+    implementation(Libraries.okHttpLoggingInterceptor)
+
+    implementation(Libraries.kotlinxSerialization)
+
+    implementation(Libraries.retrofit)
+    implementation(Libraries.kotlinxSerializationConverter)
+
+    implementation(Libraries.coil)
 
     testImplementation(TestLibraries.junit)
 
